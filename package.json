@@ -7,13 +7,23 @@
     "arrowParens": "always"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier \"{apps,libs}/**/*.{ts,tsx,js,json}\" --ignore-path .gitignore",
+    "format:check": "pnpm format --check",
+    "format:write": "pnpm format --write",
+    "tsc": "pnpm --parallel -r run tsc",
+    "lint": "pnpm --parallel -r run lint",
+    "build": "pnpm --parallel -run build",
+    "validate": "pnpm format:write && pnpm tsc && pnpm lint",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "prettier": "^3.0.0",
     "ts": "^0.2.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "husky": "^8.0.0"
   }
 }
